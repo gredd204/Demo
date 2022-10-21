@@ -3,25 +3,25 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t kmlaydin/podinfo:${env.BUILD_NUMBER} ."
+        sh "docker build -t sandeepreddy1166/demorepo1:${env.BUILD_NUMBER} ."
       }
     }
     stage('Docker Push') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+        withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push kmlaydin/podinfo:${env.BUILD_NUMBER}"
+          sh "docker push sandeepreddy1166/demorepo1:${env.BUILD_NUMBER}"
         }
       }
     }
     stage('Docker Remove Image') {
       steps {
-        sh "docker rmi kmlaydin/podinfo:${env.BUILD_NUMBER}"
+        sh "docker rmi sandeepreddy1166/demorepo1:${env.BUILD_NUMBER}"
       }
     }
     stage('Apply Kubernetes Files') {
       steps {
-          withKubeConfig([credentialsId: 'kubeconfig']) {
+          withKubeConfig([credentialsId: 'k8scred']) {
           sh 'cat deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
           sh 'kubectl apply -f service.yaml'
         }
