@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { label "docker-slave" }
   stages {
     stage('Docker Build') {
       steps {
