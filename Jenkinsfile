@@ -1,11 +1,23 @@
 pipeline {
 
+    agent { node { label 'docker-maven-slave' } }
+  
+    options {
+
+    disableConcurrentBuilds()
+
+    skipStagesAfterUnstable()
+
+    buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+
+    parallelsAlwaysFailFast()
+
+  }
+
   environment {
     dockerimagename = "sandeepreddy1166/demorepo1"
     dockerImage = ""
   }
-
-  agent any
 
   stages {
 
