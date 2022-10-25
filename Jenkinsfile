@@ -11,9 +11,10 @@ pipeline {
 
   stages {
 
-    stage('Git Clone') {
+       
+    stage('Checkout Source') {
       steps {
-        git credentialsId: 'Democred', url: 'https://github.com/gredd204/nodeapp_demo.git'
+        git 'https://github.com/gredd204/nodeapp_demo.git'
       }
     }
 
