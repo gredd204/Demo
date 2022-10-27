@@ -14,28 +14,7 @@ pipeline {
        
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/gredd204/nodeapp_demo.git'
-      }
-    }
-
-    stage('Build image') {
-      steps{
-        script {
-          dockerImage = docker.build dockerimagename
-        }
-      }
-    }
-
-    stage('Pushing Image') {
-      environment {
-               registryCredential = 'dockercred'
-           }
-      steps{
-        script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
-          }
-        }
+        git 'https://github.com/gredd204/hcc-k8s-examples.git'
       }
     }
 
