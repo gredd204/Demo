@@ -1,8 +1,4 @@
-pipeline {
-
-    agent { node { label 'docker-maven-slave' }
-          }
-    
+pipeline {  
   
    environment {
     dockerimagename = "sandeepreddy1166/demorepo1"
@@ -13,12 +9,21 @@ pipeline {
 
        
     stage('Checkout Source') {
+      agent { node { label 'docker-maven-slave' }
+            }
+          
       steps {
-        git 'https://github.com/gredd204/nodeapp_demo.git'
+         checkout scm
+
       }
     }
+    
 
     stage('Build image') {
+        
+     agent { node { label 'docker-maven-slave' }
+            }
+                  
       steps{
         script {
           dockerImage = docker.build dockerimagename
