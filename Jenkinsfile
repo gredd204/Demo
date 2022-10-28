@@ -1,5 +1,8 @@
 pipeline {  
   
+  agent { node { label 'docker-maven-slave' }
+            }
+  
    environment {
     dockerimagename = "sandeepreddy1166/demorepo1"
     dockerImage = ""
