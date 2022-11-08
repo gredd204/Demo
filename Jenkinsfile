@@ -12,8 +12,8 @@ pipeline {
 
        
     stage('Checkout Source') {
-      agent { node { label 'docker-maven-slave' }
-            }
+     // agent { node { label 'docker-maven-slave' }
+      //      }
           
       steps {
          checkout scm
@@ -24,8 +24,8 @@ pipeline {
 
     stage('Build image') {
         
-     agent { node { label 'docker-maven-slave' }
-            }
+    // agent { node { label 'docker-maven-slave' }
+    //        }
                   
       steps{
         script {
