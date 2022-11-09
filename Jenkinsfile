@@ -5,7 +5,7 @@
 
 pipeline {  
   
-  agent { node { label 'docker-maven-slave' }
+  agent { node { label 'docker-kitchensink-slave' }
             }
   
    environment {
