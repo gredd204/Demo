@@ -57,7 +57,7 @@ pipeline {
       stage('Deploy to Kubernetes nonprod'){
 
    	steps {
-   		    git branch: 'master', url: 'https://github.optum.com/brieger/pipeline_test.git'
+   		    // git branch: 'master', url: 'https://github.optum.com/brieger/pipeline_test.git'
    				glKubernetesApply credentials: "$env.K8s_CREDENTIALS_ID",
           clusterPort: 443,
    				cluster: "hcc-ctc-prd-usr001-0.optum.com",
