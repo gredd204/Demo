@@ -52,8 +52,7 @@ pipeline {
       stage('Deploy to Kubernetes nonprod'){
 
    	steps {
-   		script {
-          git branch: 'master', url: 'https://github.optum.com/brieger/pipeline_test.git'
+   		    git branch: 'master', url: 'https://github.optum.com/brieger/pipeline_test.git'
    				glKubernetesApplyBasic credentials: "$env.K8s_CREDENTIALS_ID",
    				cluster: "ctcnonprdusr001",
    				namespace: "iva-dev01",
@@ -62,7 +61,7 @@ pipeline {
    				env: "nonprod",
    				deleteIfExists: true, wait: false
 
-   			}
+   			
    		}
    	}
 
