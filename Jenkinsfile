@@ -60,7 +60,7 @@ pipeline {
    		    git branch: 'master', url: 'https://github.optum.com/brieger/pipeline_test.git'
    				glKubernetesApply credentials: "$env.K8s_CREDENTIALS_ID",
           clusterPort: 443,
-   				cluster: "ctcnonprdusr001",
+   				cluster: "hcc-ctc-prd-usr001-0.optum.com",
    				namespace: "iva-dev01",
    				yamls: ["Deployment.yml"],
    				isProduction: false,
