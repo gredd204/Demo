@@ -47,12 +47,22 @@ pipeline {
       }
     }
 
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "K8scred")
-        }
-      }
-    }
+      stage('Deploy to Kubernetes nonprod'){
+
+   	steps {
+   		script {
+
+   				glKubernetesApply credentials: "K8scred",
+   				cluster: "ctcnonprdusr001",
+   				namespace: "iva-dev01",
+   				yamls: ["Deployment_Nonprod.yml"],
+   				isProduction: false,
+   				env: "nonprod",
+   				deleteIfExists: true, wait: false
+
+   			}
+   		}
+   	}
+}
   }
 }
