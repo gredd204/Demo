@@ -4,7 +4,7 @@ pipeline {
             }
   
    environment {
-    dockerimagename = "artifactory/docker/iva-dev01"
+    dockerimagename = "docker/iva-dev01"
     dockerImage = ""
   }
 
@@ -40,7 +40,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'https://repo1.uhc.com:443', registryCredential ) {
+          docker.withRegistry( 'https://repo1.uhc.com:443/artifactory/', registryCredential ) {
             dockerImage.push("latest")
           }
         }
