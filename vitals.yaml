@@ -1,0 +1,8 @@
+apiVersion: v1
+metadata:
+  askId: AIDE_0076932
+  caAgileId: poc
+  projectKey: com.optum.peg.iva.app.test
+  projectFriendlyName: peg-iva-app-test
+  componentType: code
+  targetQG: GATE_00
