@@ -4,7 +4,7 @@ pipeline {
             }
   
    environment {
-    dockerimagename = "sandeepreddy1166/demorepo1"
+    dockerimagename = "artifactory/docker/iva-dev01"
     dockerImage = ""
   }
 
@@ -36,11 +36,11 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'DockerCredpri'
+               registryCredential = 'DockerCred'
            }
       steps{
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+          docker.withRegistry( 'https://repo1.uhc.com', registryCredential ) {
             dockerImage.push("latest")
           }
         }
