@@ -6,6 +6,8 @@ pipeline {
    environment {
     dockerimagename = "sandeepreddy1166/demorepo1"
     dockerImage = ""
+    KUBECTL_VERSION = '1.14.2'
+    K8S_CREDENTIALS_ID = 'K8scred'
   }
 
   stages {
@@ -51,8 +53,8 @@ pipeline {
 
    	steps {
    		script {
-
-   				glKubernetesApply credentials: "K8scred",
+          git branch: 'master', url: 'https://github.optum.com/brieger/pipeline_test.git'
+   				glKubernetesApplyBasic credentials: "$env.K8s_CREDENTIALS_ID",
    				cluster: "ctcnonprdusr001",
    				namespace: "iva-dev01",
    				yamls: ["Deployment.yml"],
