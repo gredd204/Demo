@@ -55,7 +55,7 @@ pipeline {
    				glKubernetesApply credentials: "K8scred",
    				cluster: "ctcnonprdusr001",
    				namespace: "iva-dev01",
-   				yamls: ["Deployment_Nonprod.yml"],
+   				yamls: ["Deployment.yml"],
    				isProduction: false,
    				env: "nonprod",
    				deleteIfExists: true, wait: false
