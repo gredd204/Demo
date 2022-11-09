@@ -40,7 +40,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'https://repo1.uhc.com', registryCredential ) {
+          docker.withRegistry( 'https://repo1.uhc.com:443', registryCredential ) {
             dockerImage.push("latest")
           }
         }
