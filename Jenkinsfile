@@ -1,3 +1,8 @@
+#!/usr/bin/env groovy
+
+
+@Library("com.optum.jenkins.pipeline.library@master") _
+
 pipeline {  
   
   agent { node { label 'docker-maven-slave' }
