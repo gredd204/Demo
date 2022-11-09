@@ -53,12 +53,13 @@ pipeline {
 
    	steps {
    		    git branch: 'master', url: 'https://github.optum.com/brieger/pipeline_test.git'
-   				glKubernetesApplyBasic credentials: "$env.K8s_CREDENTIALS_ID",
-   				cluster: "ctcnonprdusr001",
-   				namespace: "iva-dev01",
+   				glKubernetesApply credentials: "$env.K8s_CREDENTIALS_ID",
+          clusterPort: 443,
+   				cluster: ctcnonprdusr001,
+   				namespace: iva-dev01,
    				yamls: ["Deployment.yml"],
    				isProduction: false,
-   				env: "nonprod",
+   				env: nonprod,
    				deleteIfExists: true, wait: false
 
    			
